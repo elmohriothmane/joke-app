@@ -8,7 +8,7 @@ executors:
       - image: docker:stable
 
 
-      
+
 
 jobs:
   build:
@@ -36,12 +36,6 @@ jobs:
       - run:
           name: Load Docker image
           command: docker load --input /tmp/workspace/image.tar
-      - run:
-          name: Publish Docker image
-          command: |
-            echo "${DOCKERHUB_PASS}" | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
-            docker push "${IMAGE_TAG}"
-
 workflows:
   version: 2
   build-push:
