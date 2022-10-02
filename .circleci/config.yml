@@ -17,8 +17,8 @@ workflows:
 
       - node/run:
           npm-run: build
-            filters:
-              branches:
-                only:
-                  - main
+          filters:
+            branches:
+              only:
+                - main
 
