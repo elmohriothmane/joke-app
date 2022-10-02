@@ -1,18 +1,24 @@
 version: 2.1
 
+orbs:
+  node123: circleci/node@5.0.3
+
 jobs:
   build:
     docker:
-      - image: cimp/node:16.17.0
+      - image: cimp/base:stable
 
     steps:
       - checkout
-      - run: npm install
-      - run: npm run build
+      - node123/install:
+          node-version: '16.13'
+      - node123/install-packages:
+          cache-path: ~/project/node_modules
+
       - run: npm test
 
 
-wordflows:
+workflows:
   build:
     jobs:
       - build-test:
