@@ -1,1 +1,22 @@
 version: 2.1
+
+jobs:
+  build-test:
+    image:
+      - docker: cimp/node:16.17.0
+
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: npm test
+
+wordflows:
+  node-test:
+    jobs:
+      - build-test:
+          filter:
+            branches:
+              only:
+                - main
+
