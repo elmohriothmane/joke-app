@@ -19,7 +19,7 @@ jobs:
 
 
 workflows:
-  build:
+  build-test:
     jobs:
       - build:
           filter:
